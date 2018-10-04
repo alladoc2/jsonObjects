@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM
+        "C:\AsiaApps\projects\ebusiness\src\java\com\qbe\asia\ebusiness\env\local\log4j.dtd">
+
+<log4j:configuration>
+
+    <appender name="DAILYDETAIL" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.base}/logs/mrgames/mgs/log4jMgsDetail.log"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="DatePattern" value="'.' yyyy-MM-dd"/>
+        <param name="Append" value="false" />         
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{ISO8601}] - %-5.5p - %-23.23X{sessionName} - %c%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="DAILY" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.base}/logs/mrgames/mgs/log4jMgs.log"/>
+        <param name="Threshold" value="WARN"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{ISO8601}] - %-5.5p - %-23.23X{sessionName} - %-6.6X{userId} - %-6.6X{p400User} - %c%m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="XSS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${catalina.base}/logs/mrgames/mgs/mgs.log"/>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="7"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{ISO8601}] - %-5.5p - %-23.23X{sessionName} - %-6.6X{userId} - %-6.6X{p400User} - %c%m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="org.apache">
+	    <level value="WARN"/>
+  	</logger>
+  	
+    <logger name="org.springframework">
+	    <level value="WARN"/>
+  	</logger>  	
+
+    <logger name="org.springframework.ws.client.MessageTracing">
+	    <level value="DEBUG"/>
+  	</logger>
+
+    <logger name="httpclient.wire.content">
+	    <level value="WARN"/>
+  	</logger>
+
+    <logger name="org.exolab.castor">
+	    <level value="WARN"/>
+  	</logger>
+
+    <root>
+        <priority value="debug"/>
+        <appender-ref ref="DAILYDETAIL"/>
+        <appender-ref ref="DAILY"/>
+    </root>
+
+</log4j:configuration>

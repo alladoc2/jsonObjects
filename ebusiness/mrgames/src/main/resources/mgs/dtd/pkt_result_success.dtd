@@ -1,0 +1,24 @@
+<!DOCTYPE pkt [
+<!ELEMENT pkt (methodresponse)>
+<!ELEMENT methodresponse (result)>
+<!ATTLIST methodresponse name (login) #REQUIRED>
+<!ATTLIST methodresponse timestamp CDATA #REQUIRED>
+<!ELEMENT result (responsiblegaming*, regulatedmarket*, extinfo)>
+<!ATTLIST result seq CDATA #REQUIRED>
+<!ATTLIST result token CDATA #REQUIRED>
+<!ATTLIST result loginname CDATA #REQUIRED>
+<!ATTLIST result currency CDATA #REQUIRED>
+<!ATTLIST result country CDATA #REQUIRED>
+<!ATTLIST result city CDATA #REQUIRED>
+<!ATTLIST result balance CDATA #REQUIRED>
+<!ATTLIST result bonusbalance CDATA #REQUIRED>
+<!ATTLIST result wallet CDATA #IMPLIED>
+<!ELEMENT responsiblegaming (add+)>
+<!ELEMENT add ANY>
+<!ATTLIST add key CDATA #REQUIRED>
+<!ATTLIST add value CDATA #REQUIRED>
+<!ELEMENT regulatedmarket (add+)>
+<!ATTLIST add key CDATA #REQUIRED>
+<!ATTLIST add value CDATA #REQUIRED>
+<!ELEMENT extinfo ANY>
+]>
